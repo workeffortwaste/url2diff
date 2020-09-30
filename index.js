@@ -8,7 +8,7 @@ module.exports = async function (url) {
 
   let htmlraw
   page.on('response', async response => {
-    if (![301, 302, 307].includes(response.status())) {
+    if (![301, 302, 303, 307, 308].includes(response.status())) {
       if (!htmlraw) {
         htmlraw = await response.text()
       }
