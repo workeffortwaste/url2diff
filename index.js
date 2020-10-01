@@ -10,6 +10,7 @@ module.exports = async function (url) {
   page.on('response', async response => {
     if (![301, 302, 303, 307, 308].includes(response.status())) {
       if (!htmlraw) {
+        htmlraw = true
         htmlraw = await response.text()
       }
     }

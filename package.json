@@ -1,6 +1,6 @@
 {
   "name": "url2diff",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/workeffortwaste/url2diff.git"
   },
-  "keywords": ["diff"],
+  "keywords": [
+    "diff"
+  ],
   "author": "Chris Johnson (https://defaced.dev)",
   "license": "ISC",
   "bugs": {
