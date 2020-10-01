@@ -21,7 +21,7 @@ module.exports = async function (url) {
   await browser.close()
 
   const input = jsdiff.createPatch(
-    'diff',
+    'diff.html',
     beautify(htmlraw, { indent_size: 2, space_in_empty_paren: true }),
     beautify(htmlparsed, { indent_size: 2, space_in_empty_paren: true })
   )
