@@ -7,13 +7,14 @@ module.exports = async function (url) {
   const page = await browser.newPage()
 
   let htmlraw
-  page.on('response', async response => {
-    if (![301, 302, 303, 307, 308].includes(response.status()) && typeof htmlraw === "undefined") {
-        htmlraw = true
-        htmlraw = await response.text()
+  const intercept = async (response) => {
+    if (![301, 302, 303, 307, 308].includes(response.status())) {
+      page.off('response', intercept)
+      htmlraw = await response.text()
     }
-  })
+  }
 
+  page.on('response', intercept)
   await page.goto(url, { waitUntil: 'networkidle2' })
   const htmlparsed = await page.content()
   await browser.close()
