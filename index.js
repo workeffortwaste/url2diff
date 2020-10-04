@@ -8,11 +8,9 @@ module.exports = async function (url) {
 
   let htmlraw
   page.on('response', async response => {
-    if (![301, 302, 303, 307, 308].includes(response.status())) {
-      if (!htmlraw) {
+    if (![301, 302, 303, 307, 308].includes(response.status()) && typeof htmlraw === "undefined") {
         htmlraw = true
         htmlraw = await response.text()
-      }
     }
   })
 
